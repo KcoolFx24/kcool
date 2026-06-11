@@ -45,7 +45,7 @@
         input { 
             width: 100%; 
             padding: 12px; 
-            margin-bottom: 20px; 
+            margin-bottom: 25px; 
             border: 2px solid #dfe6e9; 
             border-radius: 8px; 
             font-size: 16px;
@@ -99,15 +99,12 @@
         <p class="perks">🎈 Drinks, food, and plenty of kids games will be available!</p>
     </div>
 
-    <p style="color: #636e72; font-size: 14px; margin-bottom: 20px;">Enter details below to instantly download the official invitation card and confirm via WhatsApp.</p>
+    <p style="color: #636e72; font-size: 14px; margin-bottom: 20px;">Enter the child's name below to instantly generate and download the invitation card pass.</p>
     
     <label for="childName">Child's Name:</label>
     <input type="text" id="childName" placeholder="Enter child's name for the card" required>
     
-    <label for="phoneNumber">WhatsApp Number:</label>
-    <input type="tel" id="phoneNumber" placeholder="e.g., 260965522822" required>
-    
-    <button class="btn btn-submit" onclick="generateSendAndDownload()">Generate Card & Connect to WhatsApp</button>
+    <button class="btn btn-submit" onclick="generateAndDownload()">Download Invitation Card</button>
 </div>
 
 <!-- Footer Credit Section -->
@@ -115,37 +112,35 @@
     Developed & Created by Me 🚀 | WhatsApp: <a href="https://wa.me/260965522822" target="_blank">+260 965 522 822</a>
 </div>
 
-<!-- This engine renders the template visually from pure code commands instantly -->
+<!-- Hidden Canvas Engine -->
 <canvas id="inviteCanvas" width="800" height="1200"></canvas>
 
 <script>
-function generateSendAndDownload() {
+function generateAndDownload() {
     const name = document.getElementById('childName').value.trim();
-    let phone = document.getElementById('phoneNumber').value.trim();
     
-    if(!name || !phone) {
-        alert("Please enter both a child's name and a WhatsApp number.");
+    if(!name) {
+        alert("Please enter a child's name first.");
         return;
     }
-
-    phone = phone.replace(/\D/g, ''); 
 
     const canvas = document.getElementById('inviteCanvas');
     const ctx = canvas.getContext('2d');
     
-    // --- CANVAS ENGINE TEMPLATE GENERATOR ---
-    // 1. Draw Background Colors & Geometry
+    // --- TEMPLATE DESIGN ENGINE ---
+    // Background Setup
     ctx.fillStyle = '#fdfffc';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    // Colorful Geometric Accents
+    // Top & Bottom Colored Accent Bars
     ctx.fillStyle = '#2ec4b6';
     ctx.fillRect(0, 0, canvas.width, 40);
     ctx.fillRect(0, canvas.height - 40, canvas.width, 40);
     
+    // Fun Corner Design Shapes
     ctx.fillStyle = '#ff9f1c';
     ctx.beginPath();
-    ctx.arc(0, 0, 180, 0, Math.PI*0.5);
+    ctx.arc(0, 0, 180, 0, Math.PI * 0.5);
     ctx.fill();
     
     ctx.fillStyle = '#e71d36';
@@ -153,9 +148,8 @@ function generateSendAndDownload() {
     ctx.arc(canvas.width, 0, 120, 0, Math.PI);
     ctx.fill();
 
-    // 2. Main Typography Layout
+    // Headers Layout
     ctx.textAlign = 'center';
-    
     ctx.font = 'bold 32px Arial';
     ctx.fillStyle = '#2ec4b6';
     ctx.fillText("YOU ARE INVITED TO", 400, 180);
@@ -164,7 +158,7 @@ function generateSendAndDownload() {
     ctx.fillStyle = '#ff9f1c';
     ctx.fillText("JAE'S 5TH BIRTHDAY!", 400, 260);
     
-    // Decorative Separation Line
+    // Divider Line
     ctx.strokeStyle = '#e9ecef';
     ctx.lineWidth = 4;
     ctx.beginPath();
@@ -172,16 +166,16 @@ function generateSendAndDownload() {
     ctx.lineTo(650, 320);
     ctx.stroke();
 
-    // 3. Stamping Child's Name dynamically in the visual core
+    // Custom Child Name Slot
     ctx.font = 'italic 34px Arial';
     ctx.fillStyle = '#6c757d';
     ctx.fillText("Special Invitation Pass For:", 400, 410);
     
     ctx.font = 'bold 52px Arial';
-    ctx.fillStyle = '#e71d36'; // Name jumps out in energetic red
+    ctx.fillStyle = '#e71d36'; 
     ctx.fillText(name.toUpperCase(), 400, 480);
     
-    // 4. Formal Party Event Data Columns
+    // Information Panel Card
     ctx.fillStyle = '#f8f9fa';
     ctx.fillRect(100, 560, 600, 420);
     ctx.strokeStyle = '#2ec4b6';
@@ -198,6 +192,7 @@ function generateSendAndDownload() {
     ctx.fillText(`🕐  Time: 13:00 - 17:00`, 400, 850);
     ctx.fillText(`💵  Admission: K200 Per Kid`, 400, 920);
 
+    // Footer Perks
     ctx.font = 'bold 28px Arial';
     ctx.fillStyle = '#2ec4b6';
     ctx.fillText("🎈 Food, Drinks & Awesome Games Available! 🎈", 400, 1060);
@@ -206,8 +201,7 @@ function generateSendAndDownload() {
     ctx.fillStyle = '#6c757d';
     ctx.fillText("Please present this card digital copy at the park entrance.", 400, 1120);
 
-    // --- AUTOMATED ACTIONS ---
-    // File Download Trigger
+    // --- INSTANT DOWNLOAD TRIGGER ---
     try {
         const imageDataUrl = canvas.toDataURL('image/jpeg', 0.95);
         const downloadLink = document.createElement('a');
@@ -217,16 +211,9 @@ function generateSendAndDownload() {
         downloadLink.click();
         document.body.removeChild(downloadLink);
     } catch (error) {
-        console.error("Image canvas delivery error:", error);
+        console.error("Image generation failed:", error);
+        alert("Something went wrong saving the image file.");
     }
-    
-    // WhatsApp Redirect
-    const whatsappMessage = `Hi! Your invitation card for *${name}* to attend Jae’s 5th Birthday Party on July 5th has been generated and saved! \n\n📍 Venue: Mungwi Park\n🕐 Time: 13:00 - 17:00\n💵 Price: K200 per kid\n\nFood, drinks, and awesome games are ready. See you there! 🎈`;
-    const encodedMessage = encodeURIComponent(whatsappMessage);
-    
-    setTimeout(() => {
-        window.location.href = `https://wa.me/${phone}?text=${encodedMessage}`;
-    }, 800);
 }
 </script>
 
