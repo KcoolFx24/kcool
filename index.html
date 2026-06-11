@@ -10,75 +10,78 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             padding: 20px; 
             text-align: center; 
-            background: linear-gradient(135deg, #2ec4b6, #ff9f1c);
+            background: linear-gradient(135deg, #0f0c1b, #241442);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: 0;
+            color: #ffffff;
         }
         .form-container { 
             max-width: 450px; 
             width: 100%;
-            background: white; 
+            background: #1a1528; 
             padding: 35px 25px; 
-            border-radius: 15px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            border: 2px solid #a29bfe;
         }
-        h2 { color: #ff9f1c; margin-top: 0; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        h2 { color: #fdcb6e; margin-top: 0; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
         
         /* Event Details Box */
         .details-box {
-            background-color: #f8f9fa;
-            border-left: 4px solid #2ec4b6;
+            background-color: #251f38;
+            border-left: 4px solid #00cec9;
             padding: 15px;
             text-align: left;
             margin-bottom: 25px;
-            border-radius: 4px;
+            border-radius: 6px;
         }
-        .details-box p { margin: 6px 0; color: #2d3436; font-size: 15px; }
-        .details-box strong { color: #2ec4b6; }
-        .perks { font-style: italic; color: #636e72; margin-top: 8px !important; font-size: 14px !important; }
+        .details-box p { margin: 6px 0; color: #ece7ff; font-size: 15px; }
+        .details-box strong { color: #00cec9; }
+        .perks { font-style: italic; color: #b2bec3; margin-top: 8px !important; font-size: 14px !important; }
 
-        label { display: block; text-align: left; margin: 10px 0 5px; font-weight: bold; color: #2d3436; font-size: 14px;}
+        label { display: block; text-align: left; margin: 10px 0 5px; font-weight: bold; color: #a29bfe; font-size: 14px;}
         input { 
             width: 100%; 
             padding: 12px; 
             margin-bottom: 25px; 
-            border: 2px solid #dfe6e9; 
+            border: 2px solid #4834d4; 
             border-radius: 8px; 
             font-size: 16px;
+            background-color: #0f0c1b;
+            color: white;
             transition: border-color 0.3s;
         }
-        input:focus { border-color: #2ec4b6; outline: none; }
+        input:focus { border-color: #00cec9; outline: none; }
         
         .btn { 
             width: 100%; 
             padding: 14px; 
-            color: white; 
+            color: #0f0c1b; 
             border: none; 
             font-size: 16px; 
             cursor: pointer; 
             font-weight: bold; 
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
             transition: transform 0.1s, background-color 0.2s;
         }
         .btn:active { transform: scale(0.98); }
-        .btn-submit { background-color: #ff9f1c; margin-top: 10px; }
-        .btn-submit:hover { background-color: #e08500; }
+        .btn-submit { background-color: #fdcb6e; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;}
+        .btn-submit:hover { background-color: #f1b04c; }
         
         /* Creator Footer Note */
         .creator-credits {
             margin-top: 25px;
             font-size: 13px;
-            color: #ffffff;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            color: #b2bec3;
             font-weight: 500;
         }
         .creator-credits a {
-            color: #ffffff;
+            color: #00cec9;
             text-decoration: underline;
             font-weight: bold;
         }
@@ -89,22 +92,22 @@
 <body>
 
 <div class="form-container">
-    <h2>Jae’s 5th Birthday</h2>
+    <h2>⚡ Jae’s 5th Birthday ⚡</h2>
     
     <!-- Party Quick Info -->
     <div class="details-box">
         <p>📍 <strong>Venue:</strong> Mungwi Park</p>
         <p>🕐 <strong>Time:</strong> 13:00 - 17:00</p>
         <p>💵 <strong>Price:</strong> K200 per kid</p>
-        <p class="perks">🎈 Drinks, food, and plenty of kids games will be available!</p>
+        <p class="perks">🎮 Drinks, food, and plenty of awesome kids games are waiting!</p>
     </div>
 
-    <p style="color: #636e72; font-size: 14px; margin-bottom: 20px;">Enter the child's name below to instantly generate and download the invitation card pass.</p>
+    <p style="color: #b2bec3; font-size: 14px; margin-bottom: 20px;">Type the child's name below to generate their neon glow invitation pass.</p>
     
     <label for="childName">Child's Name:</label>
-    <input type="text" id="childName" placeholder="Enter child's name for the card" required>
+    <input type="text" id="childName" placeholder="Enter child's name..." required>
     
-    <button class="btn btn-submit" onclick="generateAndDownload()">Download Invitation Card</button>
+    <button class="btn btn-submit" onclick="generateAndDownload()">Download Glow Pass 🚀</button>
 </div>
 
 <!-- Footer Credit Section -->
@@ -127,92 +130,104 @@ function generateAndDownload() {
     const canvas = document.getElementById('inviteCanvas');
     const ctx = canvas.getContext('2d');
     
-    // --- TEMPLATE DESIGN ENGINE ---
-    // Background Setup
-    ctx.fillStyle = '#fdfffc';
+    // --- DARK PLAYFUL TEMPLATE DESIGN ENGINE ---
+    // Deep Space Background
+    ctx.fillStyle = '#0f0a1c';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    // Top & Bottom Colored Accent Bars
-    ctx.fillStyle = '#2ec4b6';
-    ctx.fillRect(0, 0, canvas.width, 40);
-    ctx.fillRect(0, canvas.height - 40, canvas.width, 40);
+    // Playful Neon Top/Bottom Border Bars
+    ctx.fillStyle = '#6c5ce7';
+    ctx.fillRect(0, 0, canvas.width, 30);
+    ctx.fillRect(0, canvas.height - 30, canvas.width, 30);
     
-    // Fun Corner Design Shapes
-    ctx.fillStyle = '#ff9f1c';
+    // Abstract Playful Neon Shapes (Circles/Planets)
+    ctx.fillStyle = '#00cec9';
     ctx.beginPath();
-    ctx.arc(0, 0, 180, 0, Math.PI * 0.5);
+    ctx.arc(40, 80, 90, 0, Math.PI * 2);
     ctx.fill();
     
-    ctx.fillStyle = '#e71d36';
+    ctx.fillStyle = '#e84393';
     ctx.beginPath();
-    ctx.arc(canvas.width, 0, 120, 0, Math.PI);
+    ctx.arc(canvas.width - 20, 200, 60, 0, Math.PI * 2);
+    ctx.fill();
+    
+    ctx.fillStyle = '#6c5ce7';
+    ctx.beginPath();
+    ctx.arc(80, canvas.height - 150, 40, 0, Math.PI * 2);
     ctx.fill();
 
     // Headers Layout
     ctx.textAlign = 'center';
-    ctx.font = 'bold 32px Arial';
-    ctx.fillStyle = '#2ec4b6';
-    ctx.fillText("YOU ARE INVITED TO", 400, 180);
+    ctx.font = 'bold 34px Montserrat, Arial';
+    ctx.fillStyle = '#00cec9'; // Electric Cyan
+    ctx.fillText("⚡ YOU ARE INVITED TO ⚡", 400, 160);
     
-    ctx.font = 'black 64px Arial';
-    ctx.fillStyle = '#ff9f1c';
-    ctx.fillText("JAE'S 5TH BIRTHDAY!", 400, 260);
+    ctx.font = '900 68px Impact, Arial';
+    ctx.fillStyle = '#fdcb6e'; // Neon Gold
+    ctx.fillText("JAE'S 5TH BIRTHDAY!", 400, 250);
     
-    // Divider Line
-    ctx.strokeStyle = '#e9ecef';
-    ctx.lineWidth = 4;
+    // Glowing Neon Divider Line
+    ctx.strokeStyle = '#6c5ce7';
+    ctx.lineWidth = 6;
     ctx.beginPath();
-    ctx.moveTo(150, 320);
-    ctx.lineTo(650, 320);
+    ctx.moveTo(150, 310);
+    ctx.lineTo(650, 310);
     ctx.stroke();
 
-    // Custom Child Name Slot
+    // Custom Child Name Slot Block
     ctx.font = 'italic 34px Arial';
-    ctx.fillStyle = '#6c757d';
-    ctx.fillText("Special Invitation Pass For:", 400, 410);
+    ctx.fillStyle = '#b2bec3';
+    ctx.fillText("🔋 Special VIP Glow Pass For:", 400, 390);
     
-    ctx.font = 'bold 52px Arial';
-    ctx.fillStyle = '#e71d36'; 
-    ctx.fillText(name.toUpperCase(), 400, 480);
+    // Dynamic Name Stamping
+    ctx.font = 'bold 56px Arial';
+    ctx.fillStyle = '#ffffff'; 
+    // Draw a dark pill badge background for the name to pop out elegantly
+    ctx.fillStyle = '#2d2544';
+    ctx.roundRect ? ctx.fillRoundRect : ctx.fillRect(150, 425, 500, 80); 
     
-    // Information Panel Card
-    ctx.fillStyle = '#f8f9fa';
+    ctx.fillStyle = '#00cec9'; // Text back to bright electric green/cyan
+    ctx.fillText(name.toUpperCase(), 400, 482);
+    
+    // Information Panel Card (Dark Theme Inner Box)
+    ctx.fillStyle = '#171226';
     ctx.fillRect(100, 560, 600, 420);
-    ctx.strokeStyle = '#2ec4b6';
-    ctx.lineWidth = 3;
+    ctx.strokeStyle = '#fdcb6e';
+    ctx.lineWidth = 4;
     ctx.strokeRect(100, 560, 600, 420);
 
-    ctx.fillStyle = '#011627';
-    ctx.font = 'bold 36px Arial';
-    ctx.fillText("PARTY DETAILS", 400, 630);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 38px Arial';
+    ctx.fillText("🎯 PARTY LOGISTICS 🎯", 400, 630);
     
-    ctx.font = '30px Arial';
-    ctx.fillText(`📅  Date: Sunday, July 5th, 2026`, 400, 710);
-    ctx.fillText(`📍  Venue: Mungwi Park`, 400, 780);
-    ctx.fillText(`🕐  Time: 13:00 - 17:00`, 400, 850);
-    ctx.fillText(`💵  Admission: K200 Per Kid`, 400, 920);
+    ctx.font = '32px Arial';
+    ctx.fillStyle = '#ece7ff';
+    ctx.fillText(`📅  Date: Sunday, July 5th, 2026`, 400, 715);
+    ctx.fillText(`📍  Venue: Mungwi Park`, 400, 785);
+    ctx.fillText(`🕐  Time: 13:00 - 17:00`, 400, 855);
+    ctx.fillText(`💵  Admission: K200 Per Kid`, 400, 925);
 
     // Footer Perks
-    ctx.font = 'bold 28px Arial';
-    ctx.fillStyle = '#2ec4b6';
-    ctx.fillText("🎈 Food, Drinks & Awesome Games Available! 🎈", 400, 1060);
+    ctx.font = 'bold 30px Arial';
+    ctx.fillStyle = '#e84393'; // Laser pink callout text
+    ctx.fillText("🍕 Food, Drinks & Kids Games Loaded! 🎮", 400, 1060);
     
     ctx.font = '20px Arial';
-    ctx.fillStyle = '#6c757d';
-    ctx.fillText("Please present this card digital copy at the park entrance.", 400, 1120);
+    ctx.fillStyle = '#b2bec3';
+    ctx.fillText("Show this digital ticket voucher at the park entrance gate.", 400, 1120);
 
     // --- INSTANT DOWNLOAD TRIGGER ---
     try {
         const imageDataUrl = canvas.toDataURL('image/jpeg', 0.95);
         const downloadLink = document.createElement('a');
-        downloadLink.download = `${name}-jaes-5th-birthday.jpg`;
+        downloadLink.download = `${name}-jaes-glow-pass.jpg`;
         downloadLink.href = imageDataUrl;
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
     } catch (error) {
         console.error("Image generation failed:", error);
-        alert("Something went wrong saving the image file.");
+        alert("Something went wrong saving your card file.");
     }
 }
 </script>
