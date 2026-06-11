@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Jae’s 5th Birthday</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            padding: 20px; 
+            text-align: center; 
+            background: linear-gradient(135deg, #2ec4b6, #ff9f1c);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .form-container { 
+            max-width: 450px; 
+            width: 100%;
+            background: white; 
+            padding: 35px 25px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
+        }
+        h2 { color: #ff9f1c; margin-top: 0; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Event Details Box */
+        .details-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #2ec4b6;
+            padding: 15px;
+            text-align: left;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+        .details-box p { margin: 6px 0; color: #2d3436; font-size: 15px; }
+        .details-box strong { color: #2ec4b6; }
+        .perks { font-style: italic; color: #636e72; margin-top: 8px !important; font-size: 14px !important; }
+
+        label { display: block; text-align: left; margin: 10px 0 5px; font-weight: bold; color: #2d3436; font-size: 14px;}
+        input { 
+            width: 100%; 
+            padding: 12px; 
+            margin-bottom: 25px; 
+            border: 2px solid #dfe6e9; 
+            border-radius: 8px; 
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus { border-color: #2ec4b6; outline: none; }
+        
+        .btn { 
+            width: 100%; 
+            padding: 14px; 
+            color: white; 
+            border: none; 
+            font-size: 16px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.1s, background-color 0.2s;
+        }
+        .btn:active { transform: scale(0.98); }
+        .btn-submit { background-color: #ff9f1c; margin-top: 10px; }
+        .btn-submit:hover { background-color: #e08500; }
+        
+        /* Creator Footer Note */
+        .creator-credits {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #ffffff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            font-weight: 500;
+        }
+        .creator-credits a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        canvas { display: none; } 
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Jae’s 5th Birthday</h2>
+    
+    <!-- Party Quick Info -->
+    <div class="details-box">
+        <p>📍 <strong>Venue:</strong> Mungwi Park</p>
+        <p>🕐 <strong>Time:</strong> 13:00 - 17:00</p>
+        <p>💵 <strong>Price:</strong> K200 per kid</p>
+        <p class="perks">🎈 Drinks, food, and plenty of kids games will be available!</p>
+    </div>
+
+    <p style="color: #636e72; font-size: 14px; margin-bottom: 20px;">Enter the child's name below to instantly generate and download the invitation card pass.</p>
+    
+    <label for="childName">Child's Name:</label>
+    <input type="text" id="childName" placeholder="Enter child's name for the card" required>
+    
+    <button class="btn btn-submit" onclick="generateAndDownload()">Download Invitation Card</button>
+</div>
+
+<!-- Footer Credit Section -->
+<div class="creator-credits">
+    Developed & Created by Me 🚀 | WhatsApp: <a href="https://wa.me/260965522822" target="_blank">+260 965 522 822</a>
+</div>
+
+<!-- Hidden Canvas Engine -->
+<canvas id="inviteCanvas" width="800" height="1200"></canvas>
+
+<script>
+function generateAndDownload() {
+    const name = document.getElementById('childName').value.trim();
+    
+    if(!name) {
+        alert("Please enter a child's name first.");
+        return;
+    }
+
+    const canvas = document.getElementById('inviteCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // --- TEMPLATE DESIGN ENGINE ---
+    // Background Setup
+    ctx.fillStyle = '#fdfffc';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Top & Bottom Colored Accent Bars
+    ctx.fillStyle = '#2ec4b6';
+    ctx.fillRect(0, 0, canvas.width, 40);
+    ctx.fillRect(0, canvas.height - 40, canvas.width, 40);
+    
+    // Fun Corner Design Shapes
+    ctx.fillStyle = '#ff9f1c';
+    ctx.beginPath();
+    ctx.arc(0, 0, 180, 0, Math.PI * 0.5);
+    ctx.fill();
+    
+    ctx.fillStyle = '#e71d36';
+    ctx.beginPath();
+    ctx.arc(canvas.width, 0, 120, 0, Math.PI);
+    ctx.fill();
+
+    // Headers Layout
+    ctx.textAlign = 'center';
+    ctx.font = 'bold 32px Arial';
+    ctx.fillStyle = '#2ec4b6';
+    ctx.fillText("YOU ARE INVITED TO", 400, 180);
+    
+    ctx.font = 'black 64px Arial';
+    ctx.fillStyle = '#ff9f1c';
+    ctx.fillText("JAE'S 5TH BIRTHDAY!", 400, 260);
+    
+    // Divider Line
+    ctx.strokeStyle = '#e9ecef';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(150, 320);
+    ctx.lineTo(650, 320);
+    ctx.stroke();
+
+    // Custom Child Name Slot
+    ctx.font = 'italic 34px Arial';
+    ctx.fillStyle = '#6c757d';
+    ctx.fillText("Special Invitation Pass For:", 400, 410);
+    
+    ctx.font = 'bold 52px Arial';
+    ctx.fillStyle = '#e71d36'; 
+    ctx.fillText(name.toUpperCase(), 400, 480);
+    
+    // Information Panel Card
+    ctx.fillStyle = '#f8f9fa';
+    ctx.fillRect(100, 560, 600, 420);
+    ctx.strokeStyle = '#2ec4b6';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(100, 560, 600, 420);
+
+    ctx.fillStyle = '#011627';
+    ctx.font = 'bold 36px Arial';
+    ctx.fillText("PARTY DETAILS", 400, 630);
+    
+    ctx.font = '30px Arial';
+    ctx.fillText(`📅  Date: Sunday, July 5th, 2026`, 400, 710);
+    ctx.fillText(`📍  Venue: Mungwi Park`, 400, 780);
+    ctx.fillText(`🕐  Time: 13:00 - 17:00`, 400, 850);
+    ctx.fillText(`💵  Admission: K200 Per Kid`, 400, 920);
+
+    // Footer Perks
+    ctx.font = 'bold 28px Arial';
+    ctx.fillStyle = '#2ec4b6';
+    ctx.fillText("🎈 Food, Drinks & Awesome Games Available! 🎈", 400, 1060);
+    
+    ctx.font = '20px Arial';
+    ctx.fillStyle = '#6c757d';
+    ctx.fillText("Please present this card digital copy at the park entrance.", 400, 1120);
+
+    // --- INSTANT DOWNLOAD TRIGGER ---
+    try {
+        const imageDataUrl = canvas.toDataURL('image/jpeg', 0.95);
+        const downloadLink = document.createElement('a');
+        downloadLink.download = `${name}-jaes-5th-birthday.jpg`;
+        downloadLink.href = imageDataUrl;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    } catch (error) {
+        console.error("Image generation failed:", error);
+        alert("Something went wrong saving the image file.");
+    }
+}
+</script>
+
+</body>
+</html>
