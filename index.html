@@ -30,6 +30,7 @@
         }
         h2 { color: #fdcb6e; margin-top: 0; font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
         
+        /* Event Details Box */
         .details-box {
             background-color: #251f38;
             border-left: 4px solid #00cec9;
@@ -72,6 +73,7 @@
         .btn-submit { background-color: #fdcb6e; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;}
         .btn-submit:hover { background-color: #f1b04c; }
         
+        /* Creator Footer Note */
         .creator-credits {
             margin-top: 25px;
             font-size: 13px;
@@ -92,6 +94,7 @@
 <div class="form-container">
     <h2>⚡ Jae’s 5th Birthday ⚡</h2>
     
+    <!-- Party Quick Info -->
     <div class="details-box">
         <p>📍 <strong>Venue:</strong> Mungwi Park</p>
         <p>🕐 <strong>Time:</strong> 13:00 - 17:00</p>
@@ -107,7 +110,7 @@
     <button class="btn btn-submit" onclick="generateAndDownload()">Download Glow Pass 🚀</button>
 </div>
 
-<!-- Webpage footer credits -->
+<!-- Footer Credit Section -->
 <div class="creator-credits">
     Developed & Created by Me 🚀 | WhatsApp: <a href="https://wa.me/260965522822" target="_blank">+260 965 522 822</a>
 </div>
@@ -137,7 +140,7 @@ function generateAndDownload() {
     ctx.fillRect(0, 0, canvas.width, 30);
     ctx.fillRect(0, canvas.height - 30, canvas.width, 30);
     
-    // Abstract Playful Neon Shapes
+    // Abstract Playful Neon Shapes (Circles/Planets)
     ctx.fillStyle = '#00cec9';
     ctx.beginPath();
     ctx.arc(40, 80, 90, 0, Math.PI * 2);
@@ -156,11 +159,11 @@ function generateAndDownload() {
     // Headers Layout
     ctx.textAlign = 'center';
     ctx.font = 'bold 34px Montserrat, Arial';
-    ctx.fillStyle = '#00cec9'; 
+    ctx.fillStyle = '#00cec9'; // Electric Cyan
     ctx.fillText("⚡ YOU ARE INVITED TO ⚡", 400, 160);
     
     ctx.font = '900 68px Impact, Arial';
-    ctx.fillStyle = '#fdcb6e'; 
+    ctx.fillStyle = '#fdcb6e'; // Neon Gold
     ctx.fillText("JAE'S 5TH BIRTHDAY!", 400, 250);
     
     // Glowing Neon Divider Line
@@ -177,13 +180,16 @@ function generateAndDownload() {
     ctx.fillText("🔋 Special VIP Glow Pass For:", 400, 390);
     
     // Dynamic Name Stamping
+    ctx.font = 'bold 56px Arial';
+    ctx.fillStyle = '#ffffff'; 
+    // Draw a dark pill badge background for the name to pop out elegantly
     ctx.fillStyle = '#2d2544';
-    if(ctx.roundRect) ctx.fillRoundRect(150, 425, 500, 80); else ctx.fillRect(150, 425, 500, 80);
+    ctx.roundRect ? ctx.fillRoundRect : ctx.fillRect(150, 425, 500, 80); 
     
-    ctx.fillStyle = '#00cec9'; 
+    ctx.fillStyle = '#00cec9'; // Text back to bright electric green/cyan
     ctx.fillText(name.toUpperCase(), 400, 482);
     
-    // Information Panel Card
+    // Information Panel Card (Dark Theme Inner Box)
     ctx.fillStyle = '#171226';
     ctx.fillRect(100, 560, 600, 420);
     ctx.strokeStyle = '#fdcb6e';
@@ -203,17 +209,12 @@ function generateAndDownload() {
 
     // Footer Perks
     ctx.font = 'bold 30px Arial';
-    ctx.fillStyle = '#e84393'; 
+    ctx.fillStyle = '#e84393'; // Laser pink callout text
     ctx.fillText("🍕 Food, Drinks & Kids Games Loaded! 🎮", 400, 1060);
     
     ctx.font = '20px Arial';
     ctx.fillStyle = '#b2bec3';
     ctx.fillText("Show this digital ticket voucher at the park entrance gate.", 400, 1120);
-
-    // --- NEW: ON-IMAGE INVITATION CARD CREDITS ---
-    ctx.font = 'bold 15px Arial';
-    ctx.fillStyle = '#4834d4'; // Discrete system developer text
-    ctx.fillText("Card System Created by Me 🚀  |  Contact: +260 965 522 822", 400, 1185);
 
     // --- INSTANT DOWNLOAD TRIGGER ---
     try {
